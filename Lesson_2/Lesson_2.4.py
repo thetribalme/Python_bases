@@ -19,6 +19,5 @@ for i, v in enumerate(job_name_list):
 
 # without forming a new list
 for i, v in enumerate(job_name_list):
-    internal_list = v.split(' ')
-    job_name_list[i] = internal_list.pop()
+    job_name_list[i] = v.split(' ').pop()
     print(f'Привет, {job_name_list[i].capitalize()}!')

@@ -6,6 +6,7 @@ import sys
 
 
 def line_by_line_combining(first_input_file_name: str, second_input_file_name: str, output_file_name: str):
+    """Combines two requested files line by line and writes result in the third one"""
     users_line_count = sum(1 for _ in open(first_input_file_name, 'r', encoding='utf-8'))
     hobbies_line_count = sum(1 for _ in open(second_input_file_name, 'r', encoding='utf-8'))
     if users_line_count < hobbies_line_count:

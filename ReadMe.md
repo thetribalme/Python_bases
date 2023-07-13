@@ -42,4 +42,12 @@ Summary
     - generator
     - set, frozen set
     - comprehensions: list, dictionary, set
+  
+
+- Lesson 6:
+  - file reading
+  - file writing
+  - file changing: content adding and rewriting
+  - data serialization
+  - json, pickle
 ------------------

@@ -11,10 +11,9 @@ import json
 names_and_hobbies = {}
 
 with open('users.csv', 'r', encoding='utf-8') as users:
-    names = users.read().splitlines()
-
-with open('hobby.csv', 'r', encoding='utf-8') as activities:
-    hobbies = activities.read().splitlines()
+    with open('hobby.csv', 'r', encoding='utf-8') as activities:
+        names = users.read().splitlines()
+        hobbies = activities.read().splitlines()
 
 if len(names) < len(hobbies):
     exit(1)
@@ -31,4 +30,4 @@ with open('combined_file.txt', 'w', encoding='utf-8') as result_txt:
 
 # writing file in .json
 with open('combined_file.json', 'w', encoding='utf-8') as result_json:
-    json.dump(names_and_hobbies, result_json)
+    json.dump(names_and_hobbies, result_json, ensure_ascii=False, indent=4)

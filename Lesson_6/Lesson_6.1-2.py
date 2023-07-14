@@ -14,20 +14,13 @@
 '''
 # task 1
 with open('nginx_logs.txt', 'r', encoding='utf-8') as file:
-    logs_list = []
-    for line in file:
-        listed_line_content = file.readline().split(' ')
-        remote_addr = listed_line_content[0]
-        request_type = listed_line_content[5].strip('"')
-        requested_resource = listed_line_content[6]
-        logs_list.append((remote_addr, request_type, requested_resource))
+    content = ((line.split()[0], line.split()[5][1:], line.split()[6]) for line in file)
+    for info in content:
+        print(info)
 
 # task 2
 with open('nginx_logs.txt', 'r', encoding='utf-8') as file:
-    ip_list = []
-    for line in file:
-        listed_line_content = file.readline().split(' -')
-        ip_list.append(listed_line_content[0])
+    ip_list = [line.split()[0] for line in file]
     unique_ips = set(ip_list)
     max_count, spammer_ip = 0, 0
     for ip in unique_ips:

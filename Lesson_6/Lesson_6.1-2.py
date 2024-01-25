@@ -12,6 +12,21 @@
 
 Задание 2. Найти IP адрес спамера и количество отправленных им запросов по данным файла логов из предыдущего задания.
 '''
+import requests
+
+url = 'https://github.com/elastic/examples/raw/master/Common%20Data%20Formats/nginx_logs/nginx_logs'
+file_extension = '.txt'
+answer = requests.get(url)
+
+primal_file_name = url.split('/')[-1]
+if file_extension not in primal_file_name:
+    filename = f'{primal_file_name}{file_extension}'
+else:
+    filename = primal_file_name
+
+with open(filename, 'wb') as f:
+    f.write(answer.content)
+
 # task 1
 with open('nginx_logs.txt', 'r', encoding='utf-8') as file:
     content = ((line.split()[0], line.split()[5][1:], line.split()[6]) for line in file)

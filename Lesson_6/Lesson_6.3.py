@@ -10,12 +10,19 @@ import json
 from itertools import zip_longest
 
 with open('users.csv', 'r', encoding='utf-8') as users:
+    count = 0
+    for line in users:
+        count+=1
     with open('hobby.csv', 'r', encoding='utf-8') as hobbies:
         all_info_list = zip_longest(users, hobbies, fillvalue=None)
         names_and_hobbies = {str(element[0].strip()): str(element[1].strip()) for element in all_info_list}
 
 
 if 'None' in names_and_hobbies:
+    exit(1)
+# checking for matching amount of lines in the new file and users file
+elif count != len(names_and_hobbies):
+    print("Something is wrong: number of lines in Users.csv and combined_file do not match")
     exit(1)
 else:
     # writing file in .txt
